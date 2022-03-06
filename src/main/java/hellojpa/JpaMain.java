@@ -51,9 +51,23 @@ public class JpaMain {
 //            em.persist(member);
 //            System.out.println("=== AFTER ===");
 
-            Member findMember1 = em.find(Member.class, 100L);
-            Member findMember2 = em.find(Member.class, 100L);
+//            Member findMember1 = em.find(Member.class, 100L);
+//            Member findMember2 = em.find(Member.class, 100L);
 
+            //플러시
+//            Member member = new Member(200L, "member200");
+//            em.persist(member);
+//
+//            em.flush();
+
+            //준영속 상태
+            Member member = em.find(Member.class, 200L);
+            member.setName("AAAAA");
+
+//            em.detach(member);
+            em.clear();
+
+            System.out.println("==================");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
