@@ -61,11 +61,11 @@ public class JpaMain {
 //            em.flush();
 
             //준영속 상태
-            Member member = em.find(Member.class, 200L);
-            member.setName("AAAAA");
-
-//            em.detach(member);
-            em.clear();
+//            Member member = em.find(Member.class, 200L);
+//            member.setName("AAAAA");
+//
+////            em.detach(member);
+//            em.clear();
 
             System.out.println("==================");
             tx.commit();
