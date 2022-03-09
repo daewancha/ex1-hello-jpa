@@ -1,10 +1,12 @@
 package hellojpa;
 
+import hellojpa.shop.domain.Team;
+import hellojpa.shop.domain.User;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
 
@@ -66,6 +68,29 @@ public class JpaMain {
 //
 ////            em.detach(member);
 //            em.clear();
+
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+            User user = new User();
+            user.setName("user1");
+            user.setTeam(team);
+            em.persist(user);
+
+            em.flush();
+            em.clear();
+
+            User findUser = em.find(User.class, user.getId());
+
+            Team findTeam = findUser.getTeam();
+            System.out.println("findTeam = " + findTeam.getName());
+
+            //객체 지향적인 방법X
+//            User findUser = em.find(User.class, user.getName());
+//
+//            Long findTeamId = findUser.getTeamId();
+//            Team findTeam = em.find(Team.class, findTeamId);
 
             tx.commit();
         } catch (Exception e) {
