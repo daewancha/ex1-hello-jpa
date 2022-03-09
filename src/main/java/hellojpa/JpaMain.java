@@ -67,7 +67,6 @@ public class JpaMain {
 ////            em.detach(member);
 //            em.clear();
 
-            System.out.println("==================");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
