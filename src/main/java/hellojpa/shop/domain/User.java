@@ -30,8 +30,10 @@ public class User {
         return team;
     }
 
-    public void setTeam(Team team) {
+    public void changeTeam(Team team) {
         this.team = team;
+        //연관관계 편의 메소드
+        team.getUsers().add(this);
     }
 
     //    public Long getTeamId() {

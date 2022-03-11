@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -70,21 +71,30 @@ public class JpaMain {
 //            em.clear();
 
             Team team = new Team();
-            team.setName("TeamA");
+            team.setName("TeamAB");
             em.persist(team);
 
             User user = new User();
-            user.setName("user1");
-            user.setTeam(team);
+            user.setName("user12");
+            user.changeTeam(team);
             em.persist(user);
 
-            em.flush();
-            em.clear();
+//            em.flush();
+//            em.clear();
 
             User findUser = em.find(User.class, user.getId());
+            List<User> users = findUser.getTeam().getUsers();
 
-            Team findTeam = findUser.getTeam();
-            System.out.println("findTeam = " + findTeam.getName());
+            System.out.println(" =========== ");
+            System.out.println("users = " + users);
+            System.out.println(" =========== ");
+//
+//            for (User u : users) {
+//                System.out.println("u = " + u.getName());
+//            }
+
+//            Team findTeam = findUser.getTeam();
+//            System.out.println("findTeam = " + findTeam.getName());
 
             //객체 지향적인 방법X
 //            User findUser = em.find(User.class, user.getName());
