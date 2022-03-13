@@ -1,9 +1,6 @@
 package hellojpa;
 
-import hellojpa.shop.domain.Order;
-import hellojpa.shop.domain.OrderItem;
-import hellojpa.shop.domain.Team;
-import hellojpa.shop.domain.User;
+import hellojpa.shop.domain.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,7 +20,13 @@ public class JpaMain {
 
         try {
 
+            Movie movie = new Movie();
+            movie.setDirector("aaa");
+            movie.setActor("bbb");
+            movie.setName("쇼생크탈출");
+            movie.setPrice(10000);
 
+            em.persist(movie);
 
 //            Order order = new Order();
 //            order.addOrderItem(new OrderItem());
