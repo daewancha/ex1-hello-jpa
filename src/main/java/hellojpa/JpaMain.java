@@ -1,5 +1,7 @@
 package hellojpa;
 
+import hellojpa.shop.domain.Order;
+import hellojpa.shop.domain.OrderItem;
 import hellojpa.shop.domain.Team;
 import hellojpa.shop.domain.User;
 
@@ -20,6 +22,12 @@ public class JpaMain {
         tx.begin();
 
         try {
+
+
+
+//            Order order = new Order();
+//            order.addOrderItem(new OrderItem());
+
             //회원 등록
 //            Member member = new Member();
 //            member.setId(2L);
@@ -70,24 +78,24 @@ public class JpaMain {
 ////            em.detach(member);
 //            em.clear();
 
-            Team team = new Team();
-            team.setName("TeamAB");
-            em.persist(team);
-
-            User user = new User();
-            user.setName("user12");
-            user.changeTeam(team);
-            em.persist(user);
+//            Team team = new Team();
+//            team.setName("TeamAB");
+//            em.persist(team);
+//
+//            User user = new User();
+//            user.setName("user12");
+//            user.changeTeam(team);
+//            em.persist(user);
 
 //            em.flush();
 //            em.clear();
 
-            User findUser = em.find(User.class, user.getId());
-            List<User> users = findUser.getTeam().getUsers();
-
-            System.out.println(" =========== ");
-            System.out.println("users = " + users);
-            System.out.println(" =========== ");
+//            User findUser = em.find(User.class, user.getId());
+//            List<User> users = findUser.getTeam().getUsers();
+//
+//            System.out.println(" =========== ");
+//            System.out.println("users = " + users);
+//            System.out.println(" =========== ");
 //
 //            for (User u : users) {
 //                System.out.println("u = " + u.getName());
