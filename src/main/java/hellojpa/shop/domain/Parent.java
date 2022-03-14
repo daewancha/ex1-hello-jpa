@@ -5,20 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member extends BaseEntity {
+public class Parent {
 
     @Id @GeneratedValue
-    @Column(name = "MEMBER_ID")
     private Long id;
 
     private String name;
 
-//    @ManyToMany
-//    @JoinTable(name = "MEMBER_PRODUCT")
-//    private List<Product> products = new ArrayList<>();
+    @OneToMany(mappedBy = "parent", orphanRemoval = false)
+    private List<Child> childList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
-    private List<MemberProduct> memberProducts = new ArrayList<>();
+    public void addChild(Child child) {
+        childList.add(child);
+        child.setParent(this);
+    }
 
     public Long getId() {
         return id;
@@ -34,5 +34,13 @@ public class Member extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Child> getChildList() {
+        return childList;
+    }
+
+    public void setChildList(List<Child> childList) {
+        this.childList = childList;
     }
 }

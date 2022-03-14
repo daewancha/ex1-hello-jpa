@@ -20,13 +20,45 @@ public class JpaMain {
 
         try {
 
-            Movie movie = new Movie();
-            movie.setDirector("aaa");
-            movie.setActor("bbb");
-            movie.setName("쇼생크탈출");
-            movie.setPrice(10000);
+            Child child1 = new Child();
+            Child child2 = new Child();
 
-            em.persist(movie);
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
+
+            em.persist(parent);
+            em.persist(child1);
+            em.persist(child2);
+
+            em.flush();
+            em.clear();
+
+            Child child11 = em.find(Child.class, child1.getId());
+
+
+//            Member member = new Member();
+//            member.setName("hello");
+//
+//            em.persist(member);
+//
+//            em.flush();
+//            em.clear();
+//
+//            Member m1 = em.find(Member.class, member.getId());
+//            //Member m1 = em.getReference(Member.class, member.getId());
+//            //프록시 객체 조회
+//            Member reference = em.getReference(Member.class, member.getId());
+//
+//            System.out.println("a==a : " + (m1 == reference));
+
+//            Movie movie = new Movie();
+//            movie.setDirector("aaa");
+//            movie.setActor("bbb");
+//            movie.setName("쇼생크탈출");
+//            movie.setPrice(10000);
+//
+//            em.persist(movie);
 
 //            Order order = new Order();
 //            order.addOrderItem(new OrderItem());
