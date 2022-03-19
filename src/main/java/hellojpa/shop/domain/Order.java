@@ -13,9 +13,9 @@ public class Order {
     @Column(name = "ORDER_ID")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "MEMBER_ID")
-    private Member member;
+//    @ManyToOne
+//    @JoinColumn(name = "MEMBER_ID")
+//    private Member member;
 
     @OneToOne
     @JoinColumn(name = "DELIVERY_ID")
@@ -42,13 +42,13 @@ public class Order {
         this.id = id;
     }
 
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
+//    public Member getMember() {
+//        return member;
+//    }
+//
+//    public void setMember(Member member) {
+//        this.member = member;
+//    }
 
     public LocalDateTime getOrderDate() {
         return orderDate;
